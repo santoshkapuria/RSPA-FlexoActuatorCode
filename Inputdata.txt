@@ -1,0 +1,722 @@
+Inputs are given below for all the figures and table.
+
+
+%%%%%%%%%%%%%%%% FOR PLATE/ SUBSTRATE %%%%%%%%%%%%%%%%%%%%
+
+ Y_s= Youngs Modulus
+ nu_s= Poisons Ratio
+ h= Thickness
+
+%%%%%%%%%%%%%%%%%%%%% FOR ACTUATOR  %%%%%%%%%%%%%%%%%%%%%%%%%%
+
+ Y1_p= Youngs Modulus in x-direction
+ Y2_p= Youngs Modulus in y-direction
+ Y3_p= Youngs Modulus in z-direction
+ nu12_p= Poisons Ratio 
+
+ d31= Piezoelectric Strain Constant
+ d32= Piezoelectric Strain Constant
+
+ mu19= Flexoelectric Constant
+ mu29= Flexoelectric Constant 
+ mu39= Flexoelectric Constant
+
+ h_t= Thickness 
+ a= Length 
+
+%%%%%%%%%%%%%%%%%%%%% FOR ADHESIVE %%%%%%%%%%%%%%%%%%%%%%%%%%
+
+ G_a= Shear Modulus 
+ Y_a= Youngs Modulus 
+ h_a= Thicness 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+ beta_1=h_a/G_a;
+ beta_2=h_a/Y_a;
+
+ V= Input Voltage
+ E_z=-V/h_t= Electric Field
+
+ alpha1= Modal Repartition Parameter
+ alpha2= Modal Repartition Parameter
+
+ NoD= No of Division
+
+ y1= Lower Limit of Integration
+ y2= Upper Limit of Integration
+
+ Nfact= For Non-dimensional
+
+prob=Condition for Plane Stress and  Plane Strain
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+For figure 2(a)
+
+%%%%%%%%%%%%%%%% SUBSTRAIT PLATE INPUT DATA%%%%%%%%%%%%%%%%%%%%
+Y_s=70e09;        %Youngs Modulus
+nu_s=0.33;          % Poisons Ratio
+h=10e-3;           % Thickness
+%%%%%%%%%%%%%%%%%%%%% ACTUATOR INPUT DATA %%%%%%%%%%%%%%%%%%%%%%%%%%
+ Y1_p=70e9;%81.3e09;%70e9;%% %%%%Youngs Modulus
+Y2_p=70e9;%81.3e09;%70e9;%150e9;%70e9;%150e9;%81.3e09;%70e9;%150e9;%70e9;%81.3e09;%70e9;%81.3e09;%70e9;%81.3e09;%70e9;%81.3e09;%150e9;%70e9;%81.3e09;%70e9;%%150e9;%%  %
+Y3_p=70e9;%64.5e09;%70e9;%150e9;%70e9;%150e9;%70e9;%150e9;%70e9;%70e9;%70e9;%70e9;%150e9;%70e9;%70e9;%%150e9;%% 
+ nu12_p=0.33;      % Poisons 
+
+d31=-5.2;%-47.616e-12;%0;%-123e-12;%-5.2;%;%0;%;-95.231e-12;%0;%-210.2e-12;% % Mechanical Strain Coupling constant
+d32=-5.2;%-47.616e-12;%0;%-123e-12;%-5.2;%%-47.616e-12;%0;%-123e-12;%-123e-12;%-47.616e-12;%-123e-12;%-47.616e-12;%-95.231e-12;%0;%-123e-12;%-210.2e-12;%-47.616e-12;%-5.2;%
+mu19=0;%8.5e-6;   %0;%0;%0;%0;%10e-6;%
+mu29=0;%100e-6;%0;%0;%0;%0;
+mu39=0;%100e-6;%0;%100e-6;%0;%100e-6;%0;%100e-6; %0;%0;%5e-6;%  %0;
+
+h_t=1e-3; %thickness of PZT
+a=0.02; %length of PZT
+%%%%%%%%%%%%%%%%%%%%% AdDHESIVE INPUT DATA %%%%%%%%%%%%%%%%%%%%%%%%%%
+G_a=1.07e9;%0.5e09;%1.67e9;%;% % shear modelus of adhesive 
+Y_a=3e9;%1.40e09;%4.7e9;% % youngs modulus of adhesive
+h_a=0.05e-3; %0.2e-3 %thickness of adhesive1
+beta_1=h_a/G_a;
+beta_2=h_a/Y_a;
+V=100;              %Input Voltage
+E_z=-V/h_t;      %Electric field
+alpha1=4;   %PZT pasted on one side of plate 
+alpha2=4;
+NoD=700;
+y1=0;
+y2=a/2;
+%xT=(x/a)';
+Nfact=[1/a;1/Y1_p;1/G_a;1/(G_a*a/2);1/(G_a*(a/2)^2)]; %[1/a;1;1;1;1];% [1/a;1;1/G_a;1/(G_a*a/2);1/(G_a*(a/2)^2)];% 
+prob=1; %2  % 1 for plane stress  %2 for plane strain
+
+
+For figure 2(b)
+
+%%%%%%%%%%%%%%%% SUBSTRAIT PLATE INPUT DATA%%%%%%%%%%%%%%%%%%%%
+Y_s=70e09;        %Youngs Modulus
+nu_s=0.33;          % Poisons Ratio
+h=30e-3; %20e-3           % Thickness
+%%%%%%%%%%%%%%%%%%%%% ACTUATOR INPUT DATA %%%%%%%%%%%%%%%%%%%%%%%%%%
+ Y1_p=70e9;%81.3e09;%70e9;%% %%%%Youngs Modulus
+Y2_p=70e9;%81.3e09;%70e9;%150e9;%70e9;%150e9;%81.3e09;%70e9;%150e9;%70e9;%81.3e09;%70e9;%81.3e09;%70e9;%81.3e09;%70e9;%81.3e09;%150e9;%70e9;%81.3e09;%70e9;%%150e9;%%  %
+Y3_p=70e9;%64.5e09;%70e9;%150e9;%70e9;%150e9;%70e9;%150e9;%70e9;%70e9;%70e9;%70e9;%150e9;%70e9;%70e9;%%150e9;%% 
+ nu12_p=0.33;      % Poisons 
+
+d31=-5.2;%-47.616e-12;%0;%-123e-12;%-5.2;%;%0;%;-95.231e-12;%0;%-210.2e-12;% % Mechanical Strain Coupling constant
+d32=-5.2;%-47.616e-12;%0;%-123e-12;%-5.2;%%-47.616e-12;%0;%-123e-12;%-123e-12;%-47.616e-12;%-123e-12;%-47.616e-12;%-95.231e-12;%0;%-123e-12;%-210.2e-12;%-47.616e-12;%-5.2;%
+mu19=0;%8.5e-6;   %0;%0;%0;%0;%10e-6;%
+mu29=0;%100e-6;%0;%0;%0;%0;
+mu39=0;%100e-6;%0;%100e-6;%0;%100e-6;%0;%100e-6; %0;%0;%5e-6;%  %0;
+
+h_t=1e-3; %thickness of PZT
+a=0.02; %length of PZT
+%%%%%%%%%%%%%%%%%%%%% AdDHESIVE INPUT DATA %%%%%%%%%%%%%%%%%%%%%%%%%%
+G_a=1.07e9;%0.5e09;%1.67e9;%;% % shear modelus of adhesive 
+Y_a=3e9;%1.40e09;%4.7e9;% % youngs modulus of adhesive
+h_a=0.1e-3;  %thickness of adhesive1
+beta_1=h_a/G_a;
+beta_2=h_a/Y_a;
+V=100;              %Input Voltage
+E_z=-V/h_t;      %Electric field
+alpha1=4;   %PZT pasted on one side of plate 
+alpha2=4;
+NoD=700;
+y1=0;
+y2=a/2;
+%xT=(x/a)';
+Nfact=[1/a;1/Y1_p;1/G_a;1/(G_a*a/2);1/(G_a*(a/2)^2)]; %[1/a;1;1;1;1];% [1/a;1;1/G_a;1/(G_a*a/2);1/(G_a*(a/2)^2)];% 
+prob=1; %2 % 1 for plane stress  %2 for plane strain
+
+
+
+For figure 3(a)
+
+%%%%%%%%%%%%%%%% SUBSTRAIT PLATE INPUT DATA%%%%%%%%%%%%%%%%%%%%
+Y_s=70e09;        %Youngs Modulus
+nu_s=0.33;          % Poisons Ratio
+h=10e-3;           % Thickness
+%%%%%%%%%%%%%%%%%%%%% ACTUATOR INPUT DATA %%%%%%%%%%%%%%%%%%%%%%%%%%
+ Y1_p=81.3e09;%70e9;%70e9;%% %%%%Youngs Modulus
+Y2_p=81.3e09;%70e9;%81.3e09;%70e9;%150e9;%70e9;%150e9;%81.3e09;%70e9;%150e9;%70e9;%81.3e09;%70e9;%81.3e09;%70e9;%81.3e09;%70e9;%81.3e09;%150e9;%70e9;%81.3e09;%70e9;%%150e9;%%  %
+Y3_p=64.5e09;%70e9;%70e9;%150e9;%70e9;%150e9;%70e9;%150e9;%70e9;%70e9;%70e9;%70e9;%150e9;%70e9;%70e9;%%150e9;%% 
+ nu12_p=0.33;      % Poisons 
+
+d31=-123e-12;%-5.2;%-47.616e-12;%0;%-5.2;%;%0;%;-95.231e-12;%0;%-210.2e-12;% % Mechanical Strain Coupling constant
+d32=-123e-12;%-5.2;%-47.616e-12;%0;%-123e-12;%-5.2;%%-47.616e-12;%0;%-123e-12;%-123e-12;%-47.616e-12;%-123e-12;%-47.616e-12;%-95.231e-12;%0;%-123e-12;%-210.2e-12;%-47.616e-12;%-5.2;%
+mu19=0;%8.5e-6;   %0;%0;%0;%0;%10e-6;%
+mu29=0;%100e-6;%0;%0;%0;%0;
+mu39=0;%100e-6;%0;%100e-6;%0;%100e-6;%0;%100e-6; %0;%0;%5e-6;%  %0;
+
+h_t=1e-3; %thickness of PZT
+a=0.02; %length of PZT
+%%%%%%%%%%%%%%%%%%%%% AdDHESIVE INPUT DATA %%%%%%%%%%%%%%%%%%%%%%%%%%
+G_a=1.07e9;%0.5e09;%1.67e9;%;% % shear modelus of adhesive 
+Y_a=3e9;%1.40e09;%4.7e9;% % youngs modulus of adhesive
+h_a=0.05e-3; %0.2e-3 %thickness of adhesive1
+beta_1=h_a/G_a;
+beta_2=h_a/Y_a;
+V=100;              %Input Voltage
+E_z=-V/h_t;      %Electric field
+alpha1=4;   %PZT pasted on one side of plate 
+alpha2=4;
+NoD=700;
+y1=0;
+y2=a/2;
+%xT=(x/a)';
+Nfact=[1/a;1;1/G_a;1/(G_a*a/2);1/(G_a*(a/2)^2)]; %[1/a;1;1;1;1];% [1/a;1;1/G_a;1/(G_a*a/2);1/(G_a*(a/2)^2)];% 
+prob=1; %2  % 1 for plane stress  %2 for plane strain
+
+
+For figure 3(b)
+
+%%%%%%%%%%%%%%%% SUBSTRAIT PLATE INPUT DATA%%%%%%%%%%%%%%%%%%%%
+Y_s=70e09;        %Youngs Modulus
+nu_s=0.33;          % Poisons Ratio
+h=30e-3; % 20e-3           % Thickness
+%%%%%%%%%%%%%%%%%%%%% ACTUATOR INPUT DATA %%%%%%%%%%%%%%%%%%%%%%%%%%
+ Y1_p=81.3e09;%70e9;%70e9;%% %%%%Youngs Modulus
+Y2_p=81.3e09;%70e9;%81.3e09;%70e9;%150e9;%70e9;%150e9;%81.3e09;%70e9;%150e9;%70e9;%81.3e09;%70e9;%81.3e09;%70e9;%81.3e09;%70e9;%81.3e09;%150e9;%70e9;%81.3e09;%70e9;%%150e9;%%  %
+Y3_p=64.5e09;%70e9;%70e9;%150e9;%70e9;%150e9;%70e9;%150e9;%70e9;%70e9;%70e9;%70e9;%150e9;%70e9;%70e9;%%150e9;%% 
+ nu12_p=0.33;      % Poisons 
+
+d31=-123e-12;%-5.2;%-47.616e-12;%0;%-5.2;%;%0;%;-95.231e-12;%0;%-210.2e-12;% % Mechanical Strain Coupling constant
+d32=-123e-12;%-5.2;%-47.616e-12;%0;%-123e-12;%-5.2;%%-47.616e-12;%0;%-123e-12;%-123e-12;%-47.616e-12;%-123e-12;%-47.616e-12;%-95.231e-12;%0;%-123e-12;%-210.2e-12;%-47.616e-12;%-5.2;%
+mu19=0;%8.5e-6;   %0;%0;%0;%0;%10e-6;%
+mu29=0;%100e-6;%0;%0;%0;%0;
+mu39=0;%100e-6;%0;%100e-6;%0;%100e-6;%0;%100e-6; %0;%0;%5e-6;%  %0;
+
+h_t=1e-3; %thickness of PZT
+a=0.02; %length of PZT
+%%%%%%%%%%%%%%%%%%%%% AdDHESIVE INPUT DATA %%%%%%%%%%%%%%%%%%%%%%%%%%
+G_a=1.07e9;%0.5e09;%1.67e9;%;% % shear modelus of adhesive 
+Y_a=3e9;%1.40e09;%4.7e9;% % youngs modulus of adhesive
+h_a=0.1e-3; %0.2e-3 %thickness of adhesive1
+beta_1=h_a/G_a;
+beta_2=h_a/Y_a;
+V=100;              %Input Voltage
+E_z=-V/h_t;      %Electric field
+alpha1=4;   %PZT pasted on one side of plate 
+alpha2=4;
+NoD=700;
+y1=0;
+y2=a/2;
+%xT=(x/a)';
+Nfact=[1/a;1;1/G_a;1/(G_a*a/2);1/(G_a*(a/2)^2)]; %[1/a;1;1;1;1];% [1/a;1;1/G_a;1/(G_a*a/2);1/(G_a*(a/2)^2)];% 
+prob=1; %2  % 1 for plane stress  %2 for plane strain
+
+
+For table 4
+
+%%%%%%%%%%%%%%%% SUBSTRAIT PLATE INPUT DATA%%%%%%%%%%%%%%%%%%%%
+Y_s=70e09;        %Youngs Modulus
+nu_s=0.33;          % Poisons Ratio
+h=1.5e-3; %3e-3% 5e-3      % Thickness
+%%%%%%%%%%%%%%%%%%%%% ACTUATOR INPUT DATA %%%%%%%%%%%%%%%%%%%%%%%%%%
+ Y1_p=150e9;%81.3e09;%70e9;%70e9;%% %%%%Youngs Modulus
+Y2_p=150e9;%81.3e09;%70e9;%81.3e09;%70e9;%70e9;%150e9;%81.3e09;%70e9;%150e9;%70e9;%81.3e09;%70e9;%81.3e09;%70e9;%81.3e09;%70e9;%81.3e09;%150e9;%70e9;%81.3e09;%70e9;%%150e9;%%  %
+Y3_p=150e9;%64.5e09;%70e9;%70e9;%150e9;%70e9;%150e9;%70e9;%150e9;%70e9;%70e9;%70e9;%70e9;%150e9;%70e9;%70e9;%%150e9;%% 
+ nu12_p=0.3;      % Poisons 
+
+d31=0;%-47.616e-12;%0;%-123e-12;%-5.2;%0;%-5.2;%;%0;%;-95.231e-12;%0;%-210.2e-12;% % Mechanical Strain Coupling constant
+d32=0;%-47.616e-12;%0;%-123e-12;%-5.2;%-47.616e-12;%0;%-123e-12;%-5.2;%%-47.616e-12;%0;%-123e-12;%-123e-12;%-47.616e-12;%-123e-12;%-47.616e-12;%-95.231e-12;%0;%-123e-12;%-210.2e-12;%-47.616e-12;%-5.2;%
+mu19=8.5e-6;   %0;%0;%0;%0;%0;%10e-6;%
+mu29=100e-6;%0;%0;%0;%0;%0;
+mu39=100e-6;%0;%100e-6;%0;%100e-6;%0;%100e-6;%0;%100e-6; %0;%0;%5e-6;%  %0;
+
+h_t=0.25e-3;%0.2e-3%0.15e-3%0.1e-3  %thickness of PZT
+a=0.014;       %length of PZT
+%%%%%%%%%%%%%%%%%%%%% AdDHESIVE INPUT DATA %%%%%%%%%%%%%%%%%%%%%%%%%%
+G_a=0.5e09;%1.07e9;%1.67e9;%;% % shear modelus of adhesive 
+Y_a=1.40e09;%3e9;%4.7e9;% % youngs modulus of adhesive
+h_a=1e-6;   %thickness of adhesive
+beta_1=h_a/G_a;
+beta_2=h_a/Y_a;
+V=20;              %Input Voltage
+E_z=-V/h_t;      %Electric field
+alpha1=4;   %PZT pasted on one side of plate 
+alpha2=4;
+NoD=700;
+y1=0;
+y2=a/2;
+%xT=(x/a)';
+Nfact=[1/a;1;1;1;1];%[1/a;1;1/G_a;1/(G_a*a/2);1/(G_a*(a/2)^2)]; % [1/a;1;1/G_a;1/(G_a*a/2);1/(G_a*(a/2)^2)];% 
+prob=2; %2  % 1 for plane stress  %2 for plane strain
+
+
+For figures 4(a) and 4(b)
+
+%%%%%%%%%%%%%%%% SUBSTRAIT PLATE INPUT DATA%%%%%%%%%%%%%%%%%%%%
+Y_s=70e09;        %Youngs Modulus
+nu_s=0.33;          % Poisons Ratio
+h=1.5e-3; % 20e-3           % Thickness
+%%%%%%%%%%%%%%%%%%%%% ACTUATOR INPUT DATA %%%%%%%%%%%%%%%%%%%%%%%%%%
+ Y1_p=81.3e09;%70e9;%70e9;%% %%%%Youngs Modulus
+Y2_p=81.3e09;%70e9;%81.3e09;%70e9;%150e9;%70e9;%150e9;%81.3e09;%70e9;%150e9;%70e9;%81.3e09;%70e9;%81.3e09;%70e9;%81.3e09;%70e9;%81.3e09;%150e9;%70e9;%81.3e09;%70e9;%%150e9;%%  %
+Y3_p=64.5e09;%70e9;%70e9;%150e9;%70e9;%150e9;%70e9;%150e9;%70e9;%70e9;%70e9;%70e9;%150e9;%70e9;%70e9;%%150e9;%% 
+ nu12_p=0.33;      % Poisons 
+
+d31=-123e-12;%-5.2;%-47.616e-12;%0;%-5.2;%;%0;%;-95.231e-12;%0;%-210.2e-12;% % Mechanical Strain Coupling constant
+d32=-123e-12;%-5.2;%-47.616e-12;%0;%-123e-12;%-5.2;%%-47.616e-12;%0;%-123e-12;%-123e-12;%-47.616e-12;%-123e-12;%-47.616e-12;%-95.231e-12;%0;%-123e-12;%-210.2e-12;%-47.616e-12;%-5.2;%
+mu19=0;%8.5e-6;   %0;%0;%0;%0;%10e-6;%
+mu29=0;%100e-6;%0;%0;%0;%0;
+mu39=0;%100e-6;%0;%100e-6;%0;%100e-6;%0;%100e-6; %0;%0;%5e-6;%  %0;
+
+h_t=0.25e-3; %thickness of PZT
+a=0.014; %length of PZT
+%%%%%%%%%%%%%%%%%%%%% AdDHESIVE INPUT DATA %%%%%%%%%%%%%%%%%%%%%%%%%%
+G_a=0.5e09;%1.07e9;%1.67e9;%;% % shear modelus of adhesive 
+Y_a=1.40e09;%3e9;%4.7e9;% % youngs modulus of adhesive
+h_a=125e-6; %50e-6% 25e-6%12.5e-6%8.33e-6%1e-6  %thickness of adhesive
+beta_1=h_a/G_a;
+beta_2=h_a/Y_a;
+V=20;              %Input Voltage
+E_z=-V/h_t;      %Electric field
+alpha1=4;   %PZT pasted on one side of plate 
+alpha2=4;
+NoD=700;
+y1=0;
+y2=a/2;
+%xT=(x/a)';
+Nfact=[1/a;1;1;1;1];%[1/a;1;1/G_a;1/(G_a*a/2);1/(G_a*(a/2)^2)]; % [1/a;1;1/G_a;1/(G_a*a/2);1/(G_a*(a/2)^2)];% 
+prob=2; %2  % 1 for plane stress  %2 for plane strain
+
+
+For figures 5(a) and 5(b)
+
+%%%%%%%%%%%%%%%% SUBSTRAIT PLATE INPUT DATA%%%%%%%%%%%%%%%%%%%%
+Y_s=70e09;        %Youngs Modulus
+nu_s=0.33;          % Poisons Ratio
+h=0.5e-3; % 1.25e-3 %2.5e-3 %5e-3%7.5e-3          % Thickness
+%%%%%%%%%%%%%%%%%%%%% ACTUATOR INPUT DATA %%%%%%%%%%%%%%%%%%%%%%%%%%
+ Y1_p=81.3e09;%70e9;%70e9;%% %%%%Youngs Modulus
+Y2_p=81.3e09;%70e9;%81.3e09;%70e9;%150e9;%70e9;%150e9;%81.3e09;%70e9;%150e9;%70e9;%81.3e09;%70e9;%81.3e09;%70e9;%81.3e09;%70e9;%81.3e09;%150e9;%70e9;%81.3e09;%70e9;%%150e9;%%  %
+Y3_p=64.5e09;%70e9;%70e9;%150e9;%70e9;%150e9;%70e9;%150e9;%70e9;%70e9;%70e9;%70e9;%150e9;%70e9;%70e9;%%150e9;%% 
+ nu12_p=0.33;      % Poisons 
+
+d31=-123e-12;%-5.2;%-47.616e-12;%0;%-5.2;%;%0;%;-95.231e-12;%0;%-210.2e-12;% % Mechanical Strain Coupling constant
+d32=-123e-12;%-5.2;%-47.616e-12;%0;%-123e-12;%-5.2;%%-47.616e-12;%0;%-123e-12;%-123e-12;%-47.616e-12;%-123e-12;%-47.616e-12;%-95.231e-12;%0;%-123e-12;%-210.2e-12;%-47.616e-12;%-5.2;%
+mu19=0;%8.5e-6;   %0;%0;%0;%0;%10e-6;%
+mu29=0;%100e-6;%0;%0;%0;%0;
+mu39=0;%100e-6;%0;%100e-6;%0;%100e-6;%0;%100e-6; %0;%0;%5e-6;%  %0;
+
+h_t=0.25e-3; %thickness of PZT
+a=0.014; %length of PZT
+%%%%%%%%%%%%%%%%%%%%% AdDHESIVE INPUT DATA %%%%%%%%%%%%%%%%%%%%%%%%%%
+G_a=0.5e09;%1.07e9;%1.67e9;%;% % shear modelus of adhesive 
+Y_a=1.40e09;%3e9;%4.7e9;% % youngs modulus of adhesive
+h_a=40e-6;   %thickness of adhesive
+beta_1=h_a/G_a;
+beta_2=h_a/Y_a;
+V=20;              %Input Voltage
+E_z=-V/h_t;      %Electric field
+alpha1=4;   %PZT pasted on one side of plate 
+alpha2=4;
+NoD=700;
+y1=0;
+y2=a/2;
+%xT=(x/a)';
+Nfact=[1/a;1;1;1;1];%[1/a;1;1/G_a;1/(G_a*a/2);1/(G_a*(a/2)^2)]; % [1/a;1;1/G_a;1/(G_a*a/2);1/(G_a*(a/2)^2)];% 
+prob=2; %2  % 1 for plane stress  %2 for plane strain
+
+For figures 6(a) and 6(b)
+
+%%%%%%%%%%%%%%%% SUBSTRAIT PLATE INPUT DATA%%%%%%%%%%%%%%%%%%%%
+Y_s=70e09;        %Youngs Modulus
+nu_s=0.33;          % Poisons Ratio
+h=1.5e-3;       % Thickness
+%%%%%%%%%%%%%%%%%%%%% ACTUATOR INPUT DATA %%%%%%%%%%%%%%%%%%%%%%%%%%
+ Y1_p=150e9;%81.3e09;%70e9;%70e9;%% %%%%Youngs Modulus
+Y2_p=150e9;%81.3e09;%70e9;%81.3e09;%70e9;%70e9;%150e9;%81.3e09;%70e9;%150e9;%70e9;%81.3e09;%70e9;%81.3e09;%70e9;%81.3e09;%70e9;%81.3e09;%150e9;%70e9;%81.3e09;%70e9;%%150e9;%%  %
+Y3_p=150e9;%64.5e09;%70e9;%70e9;%150e9;%70e9;%150e9;%70e9;%150e9;%70e9;%70e9;%70e9;%70e9;%150e9;%70e9;%70e9;%%150e9;%% 
+ nu12_p=0.3;      % Poisons 
+
+d31=0;%-123e-12;%-5.2;%-47.616e-12;%0;%-5.2;%;%0;%;-95.231e-12;%0;%-210.2e-12;% % Mechanical Strain Coupling constant
+d32=0;%-123e-12;%-5.2;%-47.616e-12;%0;%-123e-12;%-5.2;%%-47.616e-12;%0;%-123e-12;%-123e-12;%-47.616e-12;%-123e-12;%-47.616e-12;%-95.231e-12;%0;%-123e-12;%-210.2e-12;%-47.616e-12;%-5.2;%
+mu19=8.5e-6;   %0;%0;%0;%0;%0;%10e-6;%
+mu29=100e-6;%0;%0;%0;%0;%0;
+mu39=100e-6;%0;%100e-6;%0;%100e-6;%0;%100e-6;%0;%100e-6; %0;%0;%5e-6;%  %0;
+
+h_t=0.1e-3; %thickness of PZT
+a=0.014; %length of PZT
+%%%%%%%%%%%%%%%%%%%%% AdDHESIVE INPUT DATA %%%%%%%%%%%%%%%%%%%%%%%%%%
+G_a=0.5e09;%1.07e9;%1.67e9;%;% % shear modelus of adhesive 
+Y_a=1.40e09;%3e9;%4.7e9;% % youngs modulus of adhesive
+h_a=50e-6; %20e-6%10e-6%5e-6%3.33e-6%1e-6   %thickness of adhesive
+beta_1=h_a/G_a;
+beta_2=h_a/Y_a;
+V=20;              %Input Voltage
+E_z=-V/h_t;      %Electric field
+alpha1=4;   %PZT pasted on one side of plate 
+alpha2=4;
+NoD=700;
+y1=0;
+y2=a/2;
+%xT=(x/a)';
+Nfact=[1/a;1;1;1;1];%[1/a;1;1/G_a;1/(G_a*a/2);1/(G_a*(a/2)^2)]; % [1/a;1;1/G_a;1/(G_a*a/2);1/(G_a*(a/2)^2)];% 
+prob=2; %2  % 1 for plane stress  %2 for plane strain
+
+
+For figures 7(a) and 7(b)
+
+%%%%%%%%%%%%%%%% SUBSTRAIT PLATE INPUT DATA%%%%%%%%%%%%%%%%%%%%
+Y_s=70e09;        %Youngs Modulus
+nu_s=0.33;          % Poisons Ratio
+h=0.2e-3; %0.5e-3 %1e-3%2e-3%3e-3       % Thickness
+%%%%%%%%%%%%%%%%%%%%% ACTUATOR INPUT DATA %%%%%%%%%%%%%%%%%%%%%%%%%%
+ Y1_p=150e9;%81.3e09;%70e9;%70e9;%% %%%%Youngs Modulus
+Y2_p=150e9;%81.3e09;%70e9;%81.3e09;%70e9;%70e9;%150e9;%81.3e09;%70e9;%150e9;%70e9;%81.3e09;%70e9;%81.3e09;%70e9;%81.3e09;%70e9;%81.3e09;%150e9;%70e9;%81.3e09;%70e9;%%150e9;%%  %
+Y3_p=150e9;%64.5e09;%70e9;%70e9;%150e9;%70e9;%150e9;%70e9;%150e9;%70e9;%70e9;%70e9;%70e9;%150e9;%70e9;%70e9;%%150e9;%% 
+ nu12_p=0.3;      % Poisons 
+
+d31=0;%-123e-12;%-5.2;%-47.616e-12;%0;%-5.2;%;%0;%;-95.231e-12;%0;%-210.2e-12;% % Mechanical Strain Coupling constant
+d32=0;%-123e-12;%-5.2;%-47.616e-12;%0;%-123e-12;%-5.2;%%-47.616e-12;%0;%-123e-12;%-123e-12;%-47.616e-12;%-123e-12;%-47.616e-12;%-95.231e-12;%0;%-123e-12;%-210.2e-12;%-47.616e-12;%-5.2;%
+mu19=8.5e-6;   %0;%0;%0;%0;%0;%10e-6;%
+mu29=100e-6;%0;%0;%0;%0;%0;
+mu39=100e-6;%0;%100e-6;%0;%100e-6;%0;%100e-6;%0;%100e-6; %0;%0;%5e-6;%  %0;
+
+h_t=0.1e-3; %thickness of PZT
+a=0.014; %length of PZT
+%%%%%%%%%%%%%%%%%%%%% AdDHESIVE INPUT DATA %%%%%%%%%%%%%%%%%%%%%%%%%%
+G_a=0.5e09;%1.07e9;%1.67e9;%;% % shear modelus of adhesive 
+Y_a=1.40e09;%3e9;%4.7e9;% % youngs modulus of adhesive
+h_a=40e-6;   %thickness of adhesive
+beta_1=h_a/G_a;
+beta_2=h_a/Y_a;
+V=20;              %Input Voltage
+E_z=-V/h_t;      %Electric field
+alpha1=4;   %PZT pasted on one side of plate 
+alpha2=4;
+NoD=700;
+y1=0;
+y2=a/2;
+%xT=(x/a)';
+Nfact=[1/a;1;1;1;1];%[1/a;1;1/G_a;1/(G_a*a/2);1/(G_a*(a/2)^2)]; % [1/a;1;1/G_a;1/(G_a*a/2);1/(G_a*(a/2)^2)];% 
+prob=2; %2  % 1 for plane stress  %2 for plane strain
+
+For figures 8(a) and 8(b)
+
+%%%%%%%%%%%%%%%% SUBSTRAIT PLATE INPUT DATA%%%%%%%%%%%%%%%%%%%%
+Y_s=70e09;        %Youngs Modulus
+nu_s=0.33;          % Poisons Ratio
+h=1.5e-3;       % Thickness
+%%%%%%%%%%%%%%%%%%%%% ACTUATOR INPUT DATA %%%%%%%%%%%%%%%%%%%%%%%%%%
+ Y1_p=150e9;%81.3e09;%70e9;%70e9;%% %%%%Youngs Modulus
+Y2_p=150e9;%81.3e09;%70e9;%81.3e09;%70e9;%70e9;%150e9;%81.3e09;%70e9;%150e9;%70e9;%81.3e09;%70e9;%81.3e09;%70e9;%81.3e09;%70e9;%81.3e09;%150e9;%70e9;%81.3e09;%70e9;%%150e9;%%  %
+Y3_p=150e9;%64.5e09;%70e9;%70e9;%150e9;%70e9;%150e9;%70e9;%150e9;%70e9;%70e9;%70e9;%70e9;%150e9;%70e9;%70e9;%%150e9;%% 
+ nu12_p=0.3;      % Poisons 
+
+d31=-47.616e-12;%0;%-123e-12;%-5.2;%0;%-5.2;%;%0;%;-95.231e-12;%0;%-210.2e-12;% % Mechanical Strain Coupling constant
+d32=-47.616e-12;%0;%-123e-12;%-5.2;%-47.616e-12;%0;%-123e-12;%-5.2;%%-47.616e-12;%0;%-123e-12;%-123e-12;%-47.616e-12;%-123e-12;%-47.616e-12;%-95.231e-12;%0;%-123e-12;%-210.2e-12;%-47.616e-12;%-5.2;%
+mu19=8.5e-6;   %0;%0;%0;%0;%0;%10e-6;%
+mu29=100e-6;%0;%0;%0;%0;%0;
+mu39=100e-6;%0;%100e-6;%0;%100e-6;%0;%100e-6;%0;%100e-6; %0;%0;%5e-6;%  %0;
+
+h_t=0.1e-3; %0.02e-3 %0.01e-3 %thickness of PZT
+a=0.014; %length of PZT
+%%%%%%%%%%%%%%%%%%%%% AdDHESIVE INPUT DATA %%%%%%%%%%%%%%%%%%%%%%%%%%
+G_a=0.5e09;%1.07e9;%1.67e9;%;% % shear modelus of adhesive 
+Y_a=1.40e09;%3e9;%4.7e9;% % youngs modulus of adhesive
+h_a=40e-6;   %thickness of adhesive
+beta_1=h_a/G_a;
+beta_2=h_a/Y_a;
+V=20;              %Input Voltage
+E_z=-V/h_t;      %Electric field
+alpha1=4;   %PZT pasted on one side of plate 
+alpha2=4;
+NoD=700;
+y1=0;
+y2=a/2;
+%xT=(x/a)';
+Nfact=[1/a;1;1;1;1];%[1/a;1;1/G_a;1/(G_a*a/2);1/(G_a*(a/2)^2)]; % [1/a;1;1/G_a;1/(G_a*a/2);1/(G_a*(a/2)^2)];% 
+prob=2; %2  % 1 for plane stress  %2 for plane strain
+
+For figure 9(a)
+
+%%%%%%%%%%%%%%%% SUBSTRAIT PLATE INPUT DATA%%%%%%%%%%%%%%%%%%%%
+Y_s=70e09;        %Youngs Modulus
+nu_s=0.33;          % Poisons Ratio
+h=1.5e-3;       % Thickness
+%%%%%%%%%%%%%%%%%%%%% ACTUATOR INPUT DATA %%%%%%%%%%%%%%%%%%%%%%%%%%
+ Y1_p=150e9;%81.3e09;%70e9;%70e9;%% %%%%Youngs Modulus
+Y2_p=150e9;%81.3e09;%70e9;%81.3e09;%70e9;%70e9;%150e9;%81.3e09;%70e9;%150e9;%70e9;%81.3e09;%70e9;%81.3e09;%70e9;%81.3e09;%70e9;%81.3e09;%150e9;%70e9;%81.3e09;%70e9;%%150e9;%%  %
+Y3_p=150e9;%64.5e09;%70e9;%70e9;%150e9;%70e9;%150e9;%70e9;%150e9;%70e9;%70e9;%70e9;%70e9;%150e9;%70e9;%70e9;%%150e9;%% 
+ nu12_p=0.3;      % Poisons 
+
+d31=0;%-47.616e-12;%0;%-123e-12;%-5.2;%0;%-5.2;%;%0;%;-95.231e-12;%0;%-210.2e-12;% % Mechanical Strain Coupling constant
+d32=0;%-47.616e-12;%0;%-123e-12;%-5.2;%-47.616e-12;%0;%-123e-12;%-5.2;%%-47.616e-12;%0;%-123e-12;%-123e-12;%-47.616e-12;%-123e-12;%-47.616e-12;%-95.231e-12;%0;%-123e-12;%-210.2e-12;%-47.616e-12;%-5.2;%
+mu19=8.5e-6;   %0;%0;%0;%0;%0;%10e-6;%
+mu29=100e-6;%0;%0;%0;%0;%0;
+mu39=100e-6;%0;%100e-6;%0;%100e-6;%0;%100e-6;%0;%100e-6; %0;%0;%5e-6;%  %0;
+
+h_t=0.1e-3; %0.02e-3 %0.01e-3 %thickness of PZT
+a=0.014; %length of PZT
+%%%%%%%%%%%%%%%%%%%%% AdDHESIVE INPUT DATA %%%%%%%%%%%%%%%%%%%%%%%%%%
+G_a=0.5e09;%1.07e9;%1.67e9;%;% % shear modelus of adhesive 
+Y_a=1.40e09;%3e9;%4.7e9;% % youngs modulus of adhesive
+h_a=1e-6;%10e-6%40e-6%80e-6%120e-6;   %thickness of adhesive
+beta_1=h_a/G_a;
+beta_2=h_a/Y_a;
+V=20;              %Input Voltage
+E_z=-V/h_t;      %Electric field
+alpha1=4;   %PZT pasted on one side of plate 
+alpha2=4;
+NoD=700;
+y1=0;
+y2=a/2;
+%xT=(x/a)';
+Nfact=[1/a;1;1;1;1];%[1/a;1;1/G_a;1/(G_a*a/2);1/(G_a*(a/2)^2)]; % [1/a;1;1/G_a;1/(G_a*a/2);1/(G_a*(a/2)^2)];% 
+prob=2; %2  % 1 for plane stress  %2 for plane strain
+
+
+For figure 9(b)
+
+%%%%%%%%%%%%%%%% SUBSTRAIT PLATE INPUT DATA%%%%%%%%%%%%%%%%%%%%
+Y_s=70e09;        %Youngs Modulus
+nu_s=0.33;          % Poisons Ratio
+h=1.5e-3;       % Thickness
+%%%%%%%%%%%%%%%%%%%%% ACTUATOR INPUT DATA %%%%%%%%%%%%%%%%%%%%%%%%%%
+ Y1_p=150e9;%81.3e09;%70e9;%70e9;%% %%%%Youngs Modulus
+Y2_p=150e9;%81.3e09;%70e9;%81.3e09;%70e9;%70e9;%150e9;%81.3e09;%70e9;%150e9;%70e9;%81.3e09;%70e9;%81.3e09;%70e9;%81.3e09;%70e9;%81.3e09;%150e9;%70e9;%81.3e09;%70e9;%%150e9;%%  %
+Y3_p=150e9;%64.5e09;%70e9;%70e9;%150e9;%70e9;%150e9;%70e9;%150e9;%70e9;%70e9;%70e9;%70e9;%150e9;%70e9;%70e9;%%150e9;%% 
+ nu12_p=0.3;      % Poisons 
+
+d31=-47.616e-12;%0;%-123e-12;%-5.2;%0;%-5.2;%;%0;%;-95.231e-12;%0;%-210.2e-12;% % Mechanical Strain Coupling constant
+d32=-47.616e-12;%0;%-123e-12;%-5.2;%-47.616e-12;%0;%-123e-12;%-5.2;%%-47.616e-12;%0;%-123e-12;%-123e-12;%-47.616e-12;%-123e-12;%-47.616e-12;%-95.231e-12;%0;%-123e-12;%-210.2e-12;%-47.616e-12;%-5.2;%
+mu19=8.5e-6;   %0;%0;%0;%0;%0;%10e-6;%
+mu29=100e-6;%0;%0;%0;%0;%0;
+mu39=100e-6;%0;%100e-6;%0;%100e-6;%0;%100e-6;%0;%100e-6; %0;%0;%5e-6;%  %0;
+
+h_t=0.1e-3; %0.02e-3 %0.01e-3 %thickness of PZT
+a=0.014; %length of PZT
+%%%%%%%%%%%%%%%%%%%%% AdDHESIVE INPUT DATA %%%%%%%%%%%%%%%%%%%%%%%%%%
+G_a=0.5e09;%1.07e9;%1.67e9;%;% % shear modelus of adhesive 
+Y_a=1.40e09;%3e9;%4.7e9;% % youngs modulus of adhesive
+h_a=40e-6;   %thickness of adhesive
+beta_1=h_a/G_a;
+beta_2=h_a/Y_a;
+V=20;              %Input Voltage
+E_z=-V/h_t;      %Electric field
+alpha1=4;   %PZT pasted on one side of plate 
+alpha2=4;
+NoD=700;
+y1=0;
+y2=a/2;
+%xT=(x/a)';
+Nfact=[1/a;1;1;1;1];%[1/a;1;1/G_a;1/(G_a*a/2);1/(G_a*(a/2)^2)]; % [1/a;1;1/G_a;1/(G_a*a/2);1/(G_a*(a/2)^2)];% 
+prob=2; %2  % 1 for plane stress  %2 for plane strain
+
+For figure 10
+
+%%%%%%%%%%%%%%%% SUBSTRAIT PLATE INPUT DATA%%%%%%%%%%%%%%%%%%%%
+Y_s=70e09;        %Youngs Modulus
+nu_s=0.33;          % Poisons Ratio
+h=1.5e-3;       % Thickness
+%%%%%%%%%%%%%%%%%%%%% ACTUATOR INPUT DATA %%%%%%%%%%%%%%%%%%%%%%%%%%
+ Y1_p=150e9;%81.3e09;%70e9;%70e9;%% %%%%Youngs Modulus
+Y2_p=150e9;%81.3e09;%70e9;%81.3e09;%70e9;%70e9;%150e9;%81.3e09;%70e9;%150e9;%70e9;%81.3e09;%70e9;%81.3e09;%70e9;%81.3e09;%70e9;%81.3e09;%150e9;%70e9;%81.3e09;%70e9;%%150e9;%%  %
+Y3_p=150e9;%64.5e09;%70e9;%70e9;%150e9;%70e9;%150e9;%70e9;%150e9;%70e9;%70e9;%70e9;%70e9;%150e9;%70e9;%70e9;%%150e9;%% 
+ nu12_p=0.3;      % Poisons 
+
+d31=-47.616e-12;%0;%-123e-12;%-5.2;%0;%-5.2;%;%0;%;-95.231e-12;%0;%-210.2e-12;% % Mechanical Strain Coupling constant
+d32=-47.616e-12;%0;%-123e-12;%-5.2;%-47.616e-12;%0;%-123e-12;%-5.2;%%-47.616e-12;%0;%-123e-12;%-123e-12;%-47.616e-12;%-123e-12;%-47.616e-12;%-95.231e-12;%0;%-123e-12;%-210.2e-12;%-47.616e-12;%-5.2;%
+mu19=8.5e-6;   %0;%0;%0;%0;%0;%10e-6;%
+mu29=100e-6;%0;%0;%0;%0;%0;
+mu39=100e-6;%0;%100e-6;%0;%100e-6;%0;%100e-6;%0;%100e-6; %0;%0;%5e-6;%  %0;
+
+h_t=0.1e-3; %0.02e-3 %0.01e-3 %thickness of PZT
+a=0.014; %length of PZT
+%%%%%%%%%%%%%%%%%%%%% AdDHESIVE INPUT DATA %%%%%%%%%%%%%%%%%%%%%%%%%%
+G_a=0.5e09;%1.07e9;%1.67e9;%;% % shear modelus of adhesive 
+Y_a=1.40e09;%3e9;%4.7e9;% % youngs modulus of adhesive
+h_a=40e-6;   %thickness of adhesive
+beta_1=h_a/G_a;
+beta_2=h_a/Y_a;
+V=20;              %Input Voltage
+E_z=-V/h_t;      %Electric field
+alpha1=4;   %PZT pasted on one side of plate 
+alpha2=4;
+NoD=700;
+y1=0;
+y2=a/2;
+%xT=(x/a)';
+Nfact=[1/a;1;1;1;1];%[1/a;1;1/G_a;1/(G_a*a/2);1/(G_a*(a/2)^2)]; % [1/a;1;1/G_a;1/(G_a*a/2);1/(G_a*(a/2)^2)];% 
+prob=2; %2  % 1 for plane stress  %2 for plane strain
+
+For figure 11
+
+%%%%%%%%%%%%%%%% SUBSTRAIT PLATE INPUT DATA%%%%%%%%%%%%%%%%%%%%
+Y_s=73e09;        %Youngs Modulus
+nu_s=0.17;          % Poisons Ratio
+h=150e-6;       % Thickness
+%%%%%%%%%%%%%%%%%%%%% ACTUATOR INPUT DATA %%%%%%%%%%%%%%%%%%%%%%%%%%
+ Y1_p=150e9;%81.3e09;%70e9;%70e9;%% %%%%Youngs Modulus
+Y2_p=150e9;%81.3e09;%70e9;%81.3e09;%70e9;%70e9;%150e9;%81.3e09;%70e9;%150e9;%70e9;%81.3e09;%70e9;%81.3e09;%70e9;%81.3e09;%70e9;%81.3e09;%150e9;%70e9;%81.3e09;%70e9;%%150e9;%%  %
+Y3_p=150e9;%64.5e09;%70e9;%70e9;%150e9;%70e9;%150e9;%70e9;%150e9;%70e9;%70e9;%70e9;%70e9;%150e9;%70e9;%70e9;%%150e9;%% 
+ nu12_p=0.3;      % Poisons 
+
+d31=-47.616e-12;%0;%-123e-12;%-5.2;%0;%-5.2;%;%0;%;-95.231e-12;%0;%-210.2e-12;% % Mechanical Strain Coupling constant
+d32=-47.616e-12;%0;%-123e-12;%-5.2;%-47.616e-12;%0;%-123e-12;%-5.2;%%-47.616e-12;%0;%-123e-12;%-123e-12;%-47.616e-12;%-123e-12;%-47.616e-12;%-95.231e-12;%0;%-123e-12;%-210.2e-12;%-47.616e-12;%-5.2;%
+mu19=8.5e-6;   %0;%0;%0;%0;%0;%10e-6;%
+mu29=100e-6;%0;%0;%0;%0;%0;
+mu39=100e-6;%0;%100e-6;%0;%100e-6;%0;%100e-6;%0;%100e-6; %0;%0;%5e-6;%  %0;
+
+h_t=10e-6;  %thickness of PZT
+a=50e-6; %50e-6%52e-6%55e-6%58e-6%60e-6%62e-6%65e-6%68e-6%70e-6	%72e-6%	75e-6%	78e-6	%80e-6	%82e-6	%85e-6	%              
+               %88e-6	%90e-6	%92e-6	%95e-6	%98e-6	%100e-6	%105e-6	%110e-6	%115e-6	%120e-6	%125e-6	130e-6	135e-6	140e-6	145e-6	150e-6	155e-6	160e-6	165e-6	
+               %170e-6	175e-6	180e-6	185e-6	190e-6	195e-6	200e-6	205e-6	210e-6	215e-6	220e-6	250e-6	300e-6	350e-6	400e-6	450e-6	500e-6	550e-6	600e-6	650e-6	700e-6	
+                %750e-6	850e-6	900e-6	950e-6	1000e-6	1200e-6	1400e-6	1600e-6	1800e-6	2000e-6	2200e-6	2400e-6	2600e-6	2800e-6	3000e-6	3200e-6	3400e-6	3600e-6	3800e-6	4000e-6
+                %length of PZT
+%%%%%%%%%%%%%%%%%%%%% AdDHESIVE INPUT DATA %%%%%%%%%%%%%%%%%%%%%%%%%%
+G_a=0.5e09;%1.07e9;%1.67e9;%;% % shear modelus of adhesive 
+Y_a=1.40e09;%3e9;%4.7e9;% % youngs modulus of adhesive
+h_a=40e-6;   %thickness of adhesive
+beta_1=h_a/G_a;
+beta_2=h_a/Y_a;
+V=20;              %Input Voltage
+E_z=-V/h_t;      %Electric field
+alpha1=4;   %PZT pasted on one side of plate 
+alpha2=4;
+NoD=700;
+y1=0;
+y2=a/2;
+%xT=(x/a)';
+Nfact=[1/a;1;1;1;1];%[1/a;1;1/G_a;1/(G_a*a/2);1/(G_a*(a/2)^2)]; % [1/a;1;1/G_a;1/(G_a*a/2);1/(G_a*(a/2)^2)];% 
+prob=2; %2  % 1 for plane stress  %2 for plane strain
+
+For figure 12(a)
+
+%%%%%%%%%%%%%%%% SUBSTRAIT PLATE INPUT DATA%%%%%%%%%%%%%%%%%%%%
+Y_s=73e09;        %Youngs Modulus
+nu_s=0.17;          % Poisons Ratio
+h=50e-6; %50e-6	55e-6	60e-6	65e-6	70e-6	75e-6	80e-6	85e-6	90e-6	95e-6	100e-6	150e-6	180e-6	200e-6	220e-6	250e-6	
+         %280e-6	300e-6	320e-6	350e-6	380e-6	400e-6	420e-6	450e-6	480e-6	500e-6	520e-6	550e-6	580e-6	600e-6	620e-6	650e-6	
+         %680e-6	700e-6	720e-6	750e-6	780e-6	800e-6	820e-6	850e-6	880e-6	900e-6	920e-6	950e-6	980e-6	1000e-6	1200e-6	1500e-6	
+         %1800e-6	2000e-6	2200e-6	2500e-6	2800e-6	3000e-6	3200e-6	3500e-6	3800e-6	4000e-6	4200e-6	4500e-6	4800e-6	5000e-6
+      % Thickness
+%%%%%%%%%%%%%%%%%%%%% ACTUATOR INPUT DATA %%%%%%%%%%%%%%%%%%%%%%%%%%
+ Y1_p=150e9;%81.3e09;%70e9;%70e9;%% %%%%Youngs Modulus
+Y2_p=150e9;%81.3e09;%70e9;%81.3e09;%70e9;%70e9;%150e9;%81.3e09;%70e9;%150e9;%70e9;%81.3e09;%70e9;%81.3e09;%70e9;%81.3e09;%70e9;%81.3e09;%150e9;%70e9;%81.3e09;%70e9;%%150e9;%%  %
+Y3_p=150e9;%64.5e09;%70e9;%70e9;%150e9;%70e9;%150e9;%70e9;%150e9;%70e9;%70e9;%70e9;%70e9;%150e9;%70e9;%70e9;%%150e9;%% 
+ nu12_p=0.3;      % Poisons 
+
+d31=-47.616e-12;%0;%-123e-12;%-5.2;%0;%-5.2;%;%0;%;-95.231e-12;%0;%-210.2e-12;% % Mechanical Strain Coupling constant
+d32=-47.616e-12;%0;%-123e-12;%-5.2;%-47.616e-12;%0;%-123e-12;%-5.2;%%-47.616e-12;%0;%-123e-12;%-123e-12;%-47.616e-12;%-123e-12;%-47.616e-12;%-95.231e-12;%0;%-123e-12;%-210.2e-12;%-47.616e-12;%-5.2;%
+mu19=8.5e-6;   %0;%0;%0;%0;%0;%10e-6;%
+mu29=100e-6;%0;%0;%0;%0;%0;
+mu39=100e-6;%0;%100e-6;%0;%100e-6;%0;%100e-6;%0;%100e-6; %0;%0;%5e-6;%  %0;
+
+h_t=10e-6;  %thickness of PZT
+a=1.5e-3;       %length of PZT
+%%%%%%%%%%%%%%%%%%%%% AdDHESIVE INPUT DATA %%%%%%%%%%%%%%%%%%%%%%%%%%
+G_a=0.5e09;%1.07e9;%1.67e9;%;% % shear modelus of adhesive 
+Y_a=1.40e09;%3e9;%4.7e9;% % youngs modulus of adhesive
+h_a=40e-6;   %thickness of adhesive
+beta_1=h_a/G_a;
+beta_2=h_a/Y_a;
+V=20;              %Input Voltage
+E_z=-V/h_t;      %Electric field
+alpha1=4;   %PZT pasted on one side of plate 
+alpha2=4;
+NoD=700;
+y1=0;
+y2=a/2;
+%xT=(x/a)';
+Nfact=[1/a;1;1;1;1];%[1/a;1;1/G_a;1/(G_a*a/2);1/(G_a*(a/2)^2)]; % [1/a;1;1/G_a;1/(G_a*a/2);1/(G_a*(a/2)^2)];% 
+prob=2; %2  % 1 for plane stress  %2 for plane strain
+
+
+For figure 12(b)
+
+%%%%%%%%%%%%%%%% SUBSTRAIT PLATE INPUT DATA%%%%%%%%%%%%%%%%%%%%
+Y_s=73e09;        %Youngs Modulus
+nu_s=0.17;          % Poisons Ratio
+h=150e-6;      % Thickness
+%%%%%%%%%%%%%%%%%%%%% ACTUATOR INPUT DATA %%%%%%%%%%%%%%%%%%%%%%%%%%
+ Y1_p=150e9;%81.3e09;%70e9;%70e9;%% %%%%Youngs Modulus
+Y2_p=150e9;%81.3e09;%70e9;%81.3e09;%70e9;%70e9;%150e9;%81.3e09;%70e9;%150e9;%70e9;%81.3e09;%70e9;%81.3e09;%70e9;%81.3e09;%70e9;%81.3e09;%150e9;%70e9;%81.3e09;%70e9;%%150e9;%%  %
+Y3_p=150e9;%64.5e09;%70e9;%70e9;%150e9;%70e9;%150e9;%70e9;%150e9;%70e9;%70e9;%70e9;%70e9;%150e9;%70e9;%70e9;%%150e9;%% 
+ nu12_p=0.3;      % Poisons 
+
+d31=-47.616e-12;%0;%-123e-12;%-5.2;%0;%-5.2;%;%0;%;-95.231e-12;%0;%-210.2e-12;% % Mechanical Strain Coupling constant
+d32=-47.616e-12;%0;%-123e-12;%-5.2;%-47.616e-12;%0;%-123e-12;%-5.2;%%-47.616e-12;%0;%-123e-12;%-123e-12;%-47.616e-12;%-123e-12;%-47.616e-12;%-95.231e-12;%0;%-123e-12;%-210.2e-12;%-47.616e-12;%-5.2;%
+mu19=8.5e-6;   %0;%0;%0;%0;%0;%10e-6;%
+mu29=100e-6;%0;%0;%0;%0;%0;
+mu39=100e-6;%0;%100e-6;%0;%100e-6;%0;%100e-6;%0;%100e-6; %0;%0;%5e-6;%  %0;
+
+h_t=5e-6; %5e-6	8e-6	10e-6	12e-6	15e-6	18e-6	20e-6	22e-6	25e-6	28e-6	30e-6	32e-6	35e-6	38e-6	40e-6	42e-6	45e-6	
+           %48	50e-6	52e-6	55e-6	58e-6	60e-6	62e-6	65e-6	68e-6	70e-6	72e-6	75e-6	78e-6	80e-6	82e-6	85e-6	88e-6	
+           %90	92e-6	95e-6	98e-6	100e-6	120e-6	130e-6	140e-6	150e-6	160e-6	170e-6	180e-6	190e-6	200e-6
+ %thickness of PZT
+a=1.5e-3;       %length of PZT
+%%%%%%%%%%%%%%%%%%%%% AdDHESIVE INPUT DATA %%%%%%%%%%%%%%%%%%%%%%%%%%
+G_a=0.5e09;%1.07e9;%1.67e9;%;% % shear modelus of adhesive 
+Y_a=1.40e09;%3e9;%4.7e9;% % youngs modulus of adhesive
+h_a=40e-6;   %thickness of adhesive
+beta_1=h_a/G_a;
+beta_2=h_a/Y_a;
+V=20;              %Input Voltage
+E_z=-V/h_t;      %Electric field
+alpha1=4;   %PZT pasted on one side of plate 
+alpha2=4;
+NoD=700;
+y1=0;
+y2=a/2;
+%xT=(x/a)';
+Nfact=[1/a;1;1;1;1];%[1/a;1;1/G_a;1/(G_a*a/2);1/(G_a*(a/2)^2)]; % [1/a;1;1/G_a;1/(G_a*a/2);1/(G_a*(a/2)^2)];% 
+prob=2; %2  % 1 for plane stress  %2 for plane strain
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
